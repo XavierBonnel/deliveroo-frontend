@@ -2,24 +2,30 @@ import React from "react";
 
 function Meals({ data, isLoading }) {
   return (
-    <div>
+    <div className="under-section">
       {isLoading ? (
         <p>Loading in progress...</p>
       ) : (
-        <div>
+        <div className="meal-list">
           {data["categories"].map((mealType, index) => {
             return (
-              <div key={index}>
+              <div className="meals" key={index}>
                 <h3>{mealType.name}</h3>
                 <div className="meal">
                   {mealType.meals.map((meal, index) => {
                     return (
-                      <div key={index} className="meal">
-                        <h4>{meal.title}</h4>
-                        <p>{meal.description}</p>
-                        <span>{meal.price}</span>
-                        {meal.popular && <span>Populaire</span>}
-                        <img src={meal.picture} alt="meal picture" />
+                      <div key={index} className="meal-description">
+                        <div className="meal-text">
+                          <h4>{meal.title}</h4>
+                          <p>{meal.description}</p>
+                          <span>{meal.price}</span>
+                          {meal.popular && <span>Populaire</span>}
+                        </div>
+                        <div className="meal-image">
+                          {meal.picture && (
+                            <img src={meal.picture} alt="meal picture" />
+                          )}
+                        </div>
                       </div>
                     );
                   })}

@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+.App {
+  font-family: "Roboto", sans-serif;
+}
+
+.logo {
+  display: flex;
+  height: 41px;
+  padding: 8px 112px;
+  svg {
+    display: flex;
+  }
+}
+
+// .container {
+//   padding-left: 30px;
+// }
+
+// ----------------selected-restaurant----------------
+
+.selected-restaurant {
+  display: flex;
+  // height: 160px;
+  padding: 30px 112px;
+
+  div {
+    display: flex;
+  }
+
+  .text-bloc-selected-restau {
+    display: flex;
+    flex-direction: column;
+    width: 736px;
+    h1 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 19px;
+    }
+  }
+  img {
+    // height: 160px;
+    display: flex;
+    align-self: center;
+    width: 350px; /* overflow: hidden; */
+  }
+}
+// ----------------Section----------------
+section {
+  display: flex;
+  flex-direction: row;
+  background-color: #f3f5f5;
+  padding-left: 112px;
+  padding-right: 112px;
+
+  div {
+    display: flex;
+    width: 1233px;
+    flex-wrap: wrap;
+  }
+  .meal-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .meals {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    h3 {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+  }
+  .meal {
+    display: flex;
+    flex-direction: row;
+  }
+  .meal-description {
+    display: flex;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    height: 166px;
+    width: 400px;
+    flex-direction: column;
+    .meal-text {
+      display: flex;
+      flex-direction: column;
+      width: 251px;
+      p {
+        font-size: 14px;
+        display: block; /* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 38px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+    }
+    .meal-image {
+      display: flex;
+    }
+    img {
+      display: flex;
+      width: 130px;
+      height: 130px;
+      align-self: center;
+      object-fit: cover;
+    }
+  }
+}
