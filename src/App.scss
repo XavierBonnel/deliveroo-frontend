@@ -102,20 +102,29 @@ section {
           font-size: 17px;
           color: #808484;
         }
+        // > div {
+        //   display: flex;
+        // }
         .meal-text {
           display: flex;
           flex-direction: column;
           width: 251px;
           height: 100%;
           justify-content: space-between;
-
+          .popular {
+            color: orange;
+          }
           p {
             font-size: 14px;
-            display: block; /* or inline-block */
-            text-overflow: ellipsis;
-            word-wrap: break-word;
+            // display: block; /* or inline-block */
+            // text-overflow: ellipsis;
+            // word-wrap: break-word;
+            // overflow: hidden;
+            // max-height: 38px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
             overflow: hidden;
-            max-height: 38px;
             color: #808484;
           }
           h3 {
@@ -125,6 +134,7 @@ section {
         }
         .meal-image {
           display: flex;
+          width: 100vw;
           img {
             display: flex;
             width: 130px;
