@@ -20,12 +20,12 @@ function Meals({ data, isLoading }) {
                             <div className="meal-text">
                               <h4>{meal.title}</h4>
                               <p>{meal.description}</p>
-                              {/* <div> */}
+                              <div className="price-pop" >
                               <span className="price">{meal.price}€</span>
                               {meal.popular && (
                                 <span className="popular">Populaire</span>
                               )}
-                              {/* </div> */}
+                              </div>
                             </div>
                             <div className="meal-image">
                               {meal.picture && (
