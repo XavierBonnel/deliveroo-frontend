@@ -10,6 +10,7 @@
   background-color: #f3f5f5;
   justify-content: center;
   align-items: center;
+  border:1px solid red;
 }
 
 .logo {
@@ -36,8 +37,10 @@ img {
   // height: 160px;
   padding: 30px 112px;
   background-color: white;
+  border:1px solid orange;
   justify-content: center;
   align-items: center;
+  width: 100vw;
 
   div {
     display: flex;
@@ -103,9 +106,12 @@ section {
     .meal {
       display: flex;
       flex-direction: row;
+      border:1px solid violet;
+
       .meal-description {
         display: flex;
         background-color: white;
+        border:1px solid green;
         border-radius: 10px;
         margin-bottom: 20px;
         margin-right: 20px;

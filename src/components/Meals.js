@@ -1,4 +1,5 @@
 import React from "react";
+import MealBloc from "./MealBloc";
 
 function Meals({ data, isLoading }) {
   return (
@@ -16,23 +17,7 @@ function Meals({ data, isLoading }) {
                     <div className="meal">
                       {mealType.meals.map((meal, index) => {
                         return (
-                          <div key={index} className="meal-description">
-                            <div className="meal-text">
-                              <h4>{meal.title}</h4>
-                              <p>{meal.description}</p>
-                              <div className="price-pop" >
-                              <span className="price">{meal.price}€</span>
-                              {meal.popular && (
-                                <span className="popular">Populaire</span>
-                              )}
-                              </div>
-                            </div>
-                            <div className="meal-image">
-                              {meal.picture && (
-                                <img src={meal.picture} alt="meal picture" />
-                              )}
-                            </div>
-                          </div>
+                          <MealBloc data={data} meal={meal} index={index}/>
                         );
                       })}
                     </div>
