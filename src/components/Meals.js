@@ -1,7 +1,18 @@
 import React from "react";
 import MealBloc from "./MealBloc";
 
-function Meals({ data, isLoading }) {
+function Meals({
+  data,
+  isLoading,
+  setSelectedRestaurant,
+  selectedRestaurant,
+  setMealId,
+  mealId,
+  setMealName,
+  mealName,
+  setMealPrice,
+  mealPrice,
+}) {
   return (
     <div className="under-section">
       {isLoading ? (
@@ -17,7 +28,19 @@ function Meals({ data, isLoading }) {
                     <div className="meal">
                       {mealType.meals.map((meal, index) => {
                         return (
-                          <MealBloc data={data} meal={meal} index={index}/>
+                          <MealBloc
+                            data={data}
+                            meal={meal}
+                            index={index}
+                            selectedRestaurant={selectedRestaurant}
+                            setSelectedRestaurant={setSelectedRestaurant}
+                            setMealId={setMealId}
+                            mealId={mealId}
+                            mealName={setMealName}
+                            setMealName={setMealName}
+                            setMealPrice={setMealPrice}
+                            mealPrice={mealPrice}
+                          />
                         );
                       })}
                     </div>

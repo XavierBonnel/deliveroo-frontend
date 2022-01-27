@@ -7,6 +7,11 @@ import Logo from "./components/Logo";
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(false);
+  const [mealOrdered, setMealOrdered] = useState(1);
+  const [mealId, setMealId] = useState("");
+  const [mealName, setMealName] = useState("");
+  const [mealPrice, setMealPrice] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,28 +53,54 @@ function App() {
           <section>
             {/* ----------section>articles for dishes---------- */}
             {/* ----bloc of meals---- */}
-            <Meals data={data} isLoading={isLoading} />
+            <Meals
+              data={data}
+              isLoading={isLoading}
+              setSelectedRestaurant={setSelectedRestaurant}
+              selectedRestaurant={selectedRestaurant}
+              setMealId={setMealId}
+              mealId={mealId}
+              setMealName={setMealName}
+              mealName={mealName}
+              mealPrice={mealPrice}
+              setMealPrice={setMealPrice}
+            />
           </section>
           {/* ------------aside for basket on right------------ */}
           <aside>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-                ad necessitatibus soluta porro id ut quia est consequatur in,
-                velit provident magni amet laudantium voluptate possimus
-                adipisci officia delectus sunt? Perferendis consectetur facilis
-                labore! Beatae laudantium totam sapiente soluta doloremque
-                incidunt quos ad necessitatibus tempora rem aperiam doloribus,
-                maxime quibusdam alias optio suscipit odit numquam quo. Corporis
-                odio unde repellendus quos, omnis non dolores suscipit nobis
-                ipsam ea tempora distinctio nulla rem? Nisi, quisquam id? Id
-                temporibus ipsa, dolores, consectetur quos voluptas quo officia
-                officiis nemo quaerat explicabo sint laudantium, nesciunt quae
-                corrupti vitae praesentium illum dolore. Rerum expedita
-                voluptatibus laudantium? Officiis ratione mollitia enim libero
-                reiciendis numquam placeat iusto.
-              </p>
-            </div>
+            {selectedRestaurant ? (
+              <div>
+                <button className="btn-validate">Valider mon panier</button>
+                <div className="selected-meal">
+                  <button>-</button>
+                  <span>{mealOrdered}</span>
+                  <button
+                    onClick={() => {
+                      setMealOrdered(mealOrdered + 1);
+                    }}
+                  >
+                    +
+                  </button>
+                  <span>{mealName} </span>
+                  <span>{mealPrice}</span>
+                </div>
+                <hr />
+                <div className="sousTotal">
+                  <span>Sous-Total </span>
+                  <span>price</span>
+                </div>
+                <div className="livraison">
+                  <span>Frais de livraison </span>
+                  <span>price</span>
+                </div>
+                <div className="total">
+                  <span>Total </span>
+                  <span>price</span>
+                </div>
+              </div>
+            ) : (
+              <span>Votre panier est vide</span>
+            )}
           </aside>
         </div>
       </div>
