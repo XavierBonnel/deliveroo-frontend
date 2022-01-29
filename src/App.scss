@@ -191,13 +191,15 @@ aside {
   justify-content: center;
   margin-top: 55px;
   border-radius: 10px;
-  padding: 17px;
+  /*! padding: 14px; */
   position: sticky;
   top: 20px;
   /*! left: 901px; */
+  align-items: center;
 
   .btn-validate {
     background-color: #00ccbc;
+    border: none;
   }
 
   .selected-meal {

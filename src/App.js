@@ -12,6 +12,7 @@ function App() {
   const [mealId, setMealId] = useState("");
   const [mealName, setMealName] = useState("");
   const [mealPrice, setMealPrice] = useState();
+  const [mealList, setMealList] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,12 +72,23 @@ function App() {
             {selectedRestaurant ? (
               <div>
                 <button className="btn-validate">Valider mon panier</button>
+                {/* {mealList.map((meal, index) => {
+                  return()
+                })} */}
                 <div className="selected-meal">
-                  <button>-</button>
+                  <button
+                    onClick={() => {
+                      setMealOrdered(mealOrdered - 1);
+                      setMealPrice(mealPrice - mealPrice);
+                    }}
+                  >
+                    -
+                  </button>
                   <span>{mealOrdered}</span>
                   <button
                     onClick={() => {
                       setMealOrdered(mealOrdered + 1);
+                      setMealPrice(mealPrice + setMealPrice);
                     }}
                   >
                     +
