@@ -185,8 +185,8 @@ aside {
   display: flex;
   color: black;
   background-color: white;
-  width: 354px;
-  height: 195px;
+  min-width: 264px;
+  min-height: 145px;
   flex-direction: column;
   justify-content: center;
   margin-top: 55px;
@@ -196,6 +196,10 @@ aside {
   top: 20px;
   /*! left: 901px; */
   align-items: center;
+  .basket {
+    display: flex;
+    flex-direction: column;
+  }
 
   .btn-validate {
     background-color: #00ccbc;
@@ -203,17 +207,21 @@ aside {
   }
 
   .selected-meal {
+    display: flex;
     button {
       background-color: #00ccbc;
     }
+    .meal-list {
+      display: flex;
+    }
   }
 
-  .sousTotal {
-  }
+  // .sousTotal {
+  // }
 
-  .livraison {
-  }
+  // .livraison {
+  // }
 
-  .total {
-  }
+  // .total {
+  // }
 }

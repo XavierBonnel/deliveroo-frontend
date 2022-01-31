@@ -9,9 +9,12 @@ function Meals({
   setMealId,
   mealId,
   setMealName,
-  mealName,
   setMealPrice,
   mealPrice,
+  mealList,
+  setMealList,
+  setMealOrdered,
+  mealOrdered,
 }) {
   return (
     <div className="under-section">
@@ -40,6 +43,10 @@ function Meals({
                             setMealName={setMealName}
                             setMealPrice={setMealPrice}
                             mealPrice={mealPrice}
+                            setMealList={setMealList}
+                            mealList={mealList}
+                            mealOrdered={mealOrdered}
+                            setMealOrdered={setMealOrdered}
                           />
                         );
                       })}

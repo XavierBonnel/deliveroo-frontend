@@ -65,37 +65,50 @@ function App() {
               mealName={mealName}
               mealPrice={mealPrice}
               setMealPrice={setMealPrice}
+              setMealList={setMealList}
+              mealList={mealList}
+              mealOrdered={mealOrdered}
+              setMealOrdered={setMealOrdered}
             />
           </section>
           {/* ------------aside for basket on right------------ */}
           <aside>
             {selectedRestaurant ? (
-              <div>
+              <div className="basket">
                 <button className="btn-validate">Valider mon panier</button>
                 {/* {mealList.map((meal, index) => {
                   return()
                 })} */}
-                <div className="selected-meal">
-                  <button
-                    onClick={() => {
-                      setMealOrdered(mealOrdered - 1);
-                      setMealPrice(mealPrice - mealPrice);
-                    }}
-                  >
-                    -
-                  </button>
-                  <span>{mealOrdered}</span>
-                  <button
-                    onClick={() => {
-                      setMealOrdered(mealOrdered + 1);
-                      setMealPrice(mealPrice + setMealPrice);
-                    }}
-                  >
-                    +
-                  </button>
-                  <span>{mealName} </span>
-                  <span>{mealPrice}</span>
-                </div>
+
+                {mealList.map((meal, index) => {
+                  return (
+                    <div className="selected-meal">
+                      <button
+                        onClick={() => {
+                          setMealOrdered(mealOrdered - 1);
+                          setMealPrice(mealPrice - mealPrice);
+                        }}
+                      >
+                        -
+                      </button>
+                      <span>{mealOrdered}</span>
+                      <button
+                        onClick={(key) => {
+                          setMealOrdered(mealList[key].quantity);
+                          setMealPrice(
+                            mealList[key].price + mealList[key].price
+                          );
+                        }}
+                      >
+                        +
+                      </button>
+                      <span className="mealList" index={index}>
+                        {mealList[index].title} {mealPrice}
+                      </span>
+                    </div>
+                  );
+                })}
+
                 <hr />
                 <div className="sousTotal">
                   <span>Sous-Total </span>

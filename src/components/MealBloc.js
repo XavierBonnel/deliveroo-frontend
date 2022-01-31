@@ -10,18 +10,45 @@ function MealBloc({
   mealName,
   setMealPrice,
   mealPrice,
+  mealList,
+  setMealList,
 }) {
-  return (
-    <div
-      key={meal.id}
-      onClick={() => {
+  const handlelick = () => {
+    const newMealList = [...mealList];
+    //chercher dans mealList si déjà meal.title identique
+    console.log("avant la liste");
+    for (let i = 0; i < mealList.length; i++) {
+      console.log("dans la boucle for");
+      if (mealList.length === 0) {
+        console.log("dans la liste");
+        newMealList.push({
+          id: meal.id,
+          title: meal.title,
+          price: meal.price,
+          quantity: 1,
+        });
+        setMealList(newMealList);
         setSelectedRestaurant(true);
-        setMealId(meal.id);
-        setMealName(meal.title);
-        setMealPrice(meal.price);
-        console.log(meal);
-      }}
-    >
+      } else {
+        console.log("dans else");
+        if (mealList[i].id === meal.id) {
+          break;
+        } else {
+          newMealList.push({
+            id: meal.id,
+            title: meal.title,
+            price: meal.price,
+            quantity: 1,
+          });
+          setMealList(newMealList);
+          setSelectedRestaurant(true);
+        }
+      }
+    }
+  };
+
+  return (
+    <div key={meal.id} onClick={handlelick}>
       <div className="meal-description">
         <div className="meal-text">
           <h4>{meal.title}</h4>
