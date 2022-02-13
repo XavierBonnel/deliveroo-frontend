@@ -5,16 +5,15 @@ import { useState, useEffect } from "react";
 //components
 import Meals from "./components/Meals";
 import Logo from "./components/Logo";
+import Cart from "./components/Cart";
 
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [selectedRestaurant, setSelectedRestaurant] = useState(false);
-  const [mealOrdered, setMealOrdered] = useState(1);
   const [mealId, setMealId] = useState("");
   const [mealName, setMealName] = useState("");
   const [mealPrice, setMealPrice] = useState();
-  const [mealList, setMealList] = useState([]);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -30,8 +29,12 @@ function App() {
     return () => {};
   }, []);
 
-  const total = () => {
+  const calculTotal = () => {
     let total = 0;
+    cart.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    return total.toFixed(2);
   };
 
   return (
@@ -72,69 +75,13 @@ function App() {
               mealName={mealName}
               mealPrice={mealPrice}
               setMealPrice={setMealPrice}
-              setMealList={setMealList}
-              mealList={mealList}
-              mealOrdered={mealOrdered}
-              setMealOrdered={setMealOrdered}
               cart={cart}
               setCart={setCart}
             />
           </section>
           {/* ------------aside for basket on right------------ */}
           <aside>
-            {selectedRestaurant ? (
-              <div className="basket">
-                <button className="btn-validate">Valider mon panier</button>
-                {/* {mealList.map((meal, index) => {
-                  return()
-                })} */}
-
-                {mealList.map((meal, index) => {
-                  return (
-                    <div className="selected-meal">
-                      <button
-                        onClick={() => {
-                          setMealOrdered(mealOrdered - 1);
-                          setMealPrice(mealPrice - mealPrice);
-                        }}
-                      >
-                        -
-                      </button>
-                      <span>{mealOrdered}</span>
-                      <button
-                        onClick={(key) => {
-                          setMealOrdered(mealList[key].quantity);
-                          setMealPrice(
-                            mealList[key].price + mealList[key].price
-                          );
-                        }}
-                      >
-                        +
-                      </button>
-                      <span className="mealList" index={index}>
-                        {mealList[index].title} {mealPrice}
-                      </span>
-                    </div>
-                  );
-                })}
-
-                <hr />
-                <div className="sousTotal">
-                  <span>Sous-Total </span>
-                  <span>price</span>
-                </div>
-                <div className="livraison">
-                  <span>Frais de livraison </span>
-                  <span>price</span>
-                </div>
-                <div className="total">
-                  <span>Total </span>
-                  <span>price</span>
-                </div>
-              </div>
-            ) : (
-              <span>Votre panier est vide</span>
-            )}
+            <Cart cart={cart} setCart={setCart} calculTotal={calculTotal} />
           </aside>
         </div>
       </div>

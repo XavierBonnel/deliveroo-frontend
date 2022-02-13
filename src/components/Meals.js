@@ -11,10 +11,6 @@ function Meals({
   setMealName,
   setMealPrice,
   mealPrice,
-  mealList,
-  setMealList,
-  setMealOrdered,
-  mealOrdered,
   cart,
   setCart,
 }) {
@@ -45,10 +41,6 @@ function Meals({
                             setMealName={setMealName}
                             setMealPrice={setMealPrice}
                             mealPrice={mealPrice}
-                            setMealList={setMealList}
-                            mealList={mealList}
-                            mealOrdered={mealOrdered}
-                            setMealOrdered={setMealOrdered}
                             cart={cart}
                             setCart={setCart}
                           />

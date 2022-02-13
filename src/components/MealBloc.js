@@ -1,56 +1,29 @@
 import React from "react";
 
-function MealBloc({
-  meal,
-  index,
-  setSelectedRestaurant,
-  selectedRestaurant,
-  setMealId,
-  setMealName,
-  mealName,
-  setMealPrice,
-  mealPrice,
-  mealList,
-  setMealList,
-  cart,
-  setCart,
-}) {
-  const handlelick = () => {
-    const newMealList = [...mealList];
-    //chercher dans mealList si déjà meal.title identique
-    console.log("avant la liste");
-    for (let i = 0; i < mealList.length; i++) {
-      console.log("dans la boucle for");
-      if (mealList.length === 0) {
-        console.log("dans la liste");
-        newMealList.push({
-          id: meal.id,
-          title: meal.title,
-          price: meal.price,
-          quantity: 1,
-        });
-        setMealList(newMealList);
-        setSelectedRestaurant(true);
-      } else {
-        console.log("dans else");
-        if (mealList[i].id === meal.id) {
-          break;
-        } else {
-          newMealList.push({
-            id: meal.id,
-            title: meal.title,
-            price: meal.price,
-            quantity: 1,
-          });
-          setMealList(newMealList);
-          setSelectedRestaurant(true);
-        }
-      }
-    }
-  };
-
+function MealBloc({ meal, setCart, cart }) {
   return (
-    <div key={meal.id} onClick={handlelick}>
+    <div
+      key={meal.id}
+      onClick={() => {
+        const itemAlreadyOrdered = cart.find((item) => item.id === meal.id);
+        console.log(itemAlreadyOrdered);
+
+        if (itemAlreadyOrdered === undefined) {
+          const newCart = [...cart];
+          newCart.push({
+            title: meal.title,
+            id: meal.id,
+            quantity: 1,
+            price: meal.price,
+          });
+          setCart(newCart);
+        } else {
+          const newCart = [...cart];
+          itemAlreadyOrdered.quantity++;
+          setCart(newCart);
+        }
+      }}
+    >
       <div className="meal-description">
         <div className="meal-text">
           <h4>{meal.title}</h4>
