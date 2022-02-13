@@ -15,6 +15,8 @@ function Meals({
   setMealList,
   setMealOrdered,
   mealOrdered,
+  cart,
+  setCart,
 }) {
   return (
     <div className="under-section">
@@ -47,6 +49,8 @@ function Meals({
                             mealList={mealList}
                             mealOrdered={mealOrdered}
                             setMealOrdered={setMealOrdered}
+                            cart={cart}
+                            setCart={setCart}
                           />
                         );
                       })}

@@ -12,6 +12,8 @@ function MealBloc({
   mealPrice,
   mealList,
   setMealList,
+  cart,
+  setCart,
 }) {
   const handlelick = () => {
     const newMealList = [...mealList];

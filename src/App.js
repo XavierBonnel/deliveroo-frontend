@@ -1,6 +1,8 @@
 import "./App.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
+//components
 import Meals from "./components/Meals";
 import Logo from "./components/Logo";
 
@@ -13,6 +15,7 @@ function App() {
   const [mealName, setMealName] = useState("");
   const [mealPrice, setMealPrice] = useState();
   const [mealList, setMealList] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +29,10 @@ function App() {
 
     return () => {};
   }, []);
+
+  const total = () => {
+    let total = 0;
+  };
 
   return (
     <div className="App">
@@ -69,6 +76,8 @@ function App() {
               mealList={mealList}
               mealOrdered={mealOrdered}
               setMealOrdered={setMealOrdered}
+              cart={cart}
+              setCart={setCart}
             />
           </section>
           {/* ------------aside for basket on right------------ */}
