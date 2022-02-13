@@ -13,6 +13,7 @@ function App() {
   const [mealName, setMealName] = useState("");
   const [mealPrice, setMealPrice] = useState();
   const [mealList, setMealList] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +27,14 @@ function App() {
 
     return () => {};
   }, []);
+
+  const calculTotal = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    return total.toFixed(2);
+  };
 
   return (
     <div className="App">
@@ -65,16 +74,59 @@ function App() {
               mealName={mealName}
               mealPrice={mealPrice}
               setMealPrice={setMealPrice}
+              cart={cart}
+              setCart={setCart}
             />
           </section>
           {/* ------------aside for basket on right------------ */}
           <aside>
-            {selectedRestaurant ? (
+            <p>{console.log(cart)}</p>
+
+            {cart.map((item) => {
+              return (
+                <div>
+                  <span>
+                    <button
+                      onClick={() => {
+                        if (item.quantity === 1) {
+                          const newCart = [...cart];
+                          const index = newCart.indexOf(item);
+                          console.log(index);
+
+                          newCart.splice(index, 1);
+
+                          setCart(newCart);
+                        } else {
+                          const newCart = [...cart];
+                          item.quantity--;
+                          setCart(newCart);
+                        }
+                      }}
+                    >
+                      -
+                    </button>
+                    {item.quantity}
+                    <button
+                      onClick={() => {
+                        const newCart = [...cart];
+                        item.quantity++;
+                        setCart(newCart);
+                      }}
+                    >
+                      +
+                    </button>
+                  </span>
+                  {item.title}
+
+                  {(item.price * item.quantity).toFixed(2)}
+                </div>
+              );
+            })}
+            {/*{selectedRestaurant ? (
               <div>
-                <button className="btn-validate">Valider mon panier</button>
                 {/* {mealList.map((meal, index) => {
                   return()
-                })} */}
+                })} 
                 <div className="selected-meal">
                   <button
                     onClick={() => {
@@ -107,12 +159,13 @@ function App() {
                 </div>
                 <div className="total">
                   <span>Total </span>
-                  <span>price</span>
+                  <span>{calculTotal}</span>
                 </div>
+                <button className="btn-validate">Valider mon panier</button>
               </div>
             ) : (
               <span>Votre panier est vide</span>
-            )}
+            )}*/}
           </aside>
         </div>
       </div>

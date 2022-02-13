@@ -10,16 +10,36 @@ function MealBloc({
   mealName,
   setMealPrice,
   mealPrice,
+  setCart,
+  cart,
 }) {
   return (
     <div
       key={meal.id}
       onClick={() => {
-        setSelectedRestaurant(true);
-        setMealId(meal.id);
-        setMealName(meal.title);
-        setMealPrice(meal.price);
-        console.log(meal);
+        const itemAlreadyOrdered = cart.find((item) => item.id === meal.id);
+        console.log(itemAlreadyOrdered);
+
+        if (itemAlreadyOrdered === undefined) {
+          const newCart = [...cart];
+          newCart.push({
+            title: meal.title,
+            id: meal.id,
+            quantity: 1,
+            price: meal.price,
+          });
+          setCart(newCart);
+        } else {
+          const newCart = [...cart];
+          itemAlreadyOrdered.quantity++;
+          setCart(newCart);
+        }
+
+        // setSelectedRestaurant(true);
+        // setMealId(meal.id);
+        // setMealName(meal.title);
+        // setMealPrice(meal.price);
+        // console.log(meal);
       }}
     >
       <div className="meal-description">
