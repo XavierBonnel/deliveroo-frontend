@@ -2,7 +2,7 @@ import React from "react";
 
 function Cart({ cart, setCart, calculTotal }) {
   return (
-    <div>
+    <div className="cart">
       <p>{console.log(cart)}</p>
       {cart.length === 0 ? (
         <p>mon panier est vide</p>
@@ -13,7 +13,7 @@ function Cart({ cart, setCart, calculTotal }) {
       {cart.map((item) => {
         return (
           <div className="selected-meal">
-            <span>
+            <span className="number-name">
               <button
                 onClick={() => {
                   if (item.quantity === 1) {
@@ -43,12 +43,28 @@ function Cart({ cart, setCart, calculTotal }) {
               >
                 +
               </button>
+              <div className="cart-meal-names">{item.title}</div>
             </span>
-            {item.title} {(item.price * item.quantity).toFixed(2)}
+            <div className="name-price">
+              <div className="price">
+                {(item.price * item.quantity).toFixed(2)}
+              </div>
+            </div>
           </div>
         );
       })}
-      {cart.length === 0 ? "" : <div>{calculTotal()}</div>}
+      {cart.length === 0 ? (
+        ""
+      ) : (
+        <div>
+          <hr />
+
+          <div className="total">
+            <div>Total : </div>
+            <div>{calculTotal()}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

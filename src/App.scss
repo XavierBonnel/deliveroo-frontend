@@ -10,7 +10,6 @@
   background-color: #f3f5f5;
   justify-content: center;
   align-items: center;
-  // border: 1px solid red;
 }
 
 .logo {
@@ -29,18 +28,12 @@ img {
   border-radius: 6px;
 }
 
-// .container {
-//   padding-left: 30px;
-// }
-
 // ----------------selected-restaurant----------------
 
 .selected-restaurant {
   display: flex;
-  // height: 160px;
   padding: 30px 112px;
   background-color: white;
-  // border: 1px solid orange;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -66,10 +59,9 @@ img {
     }
   }
   img {
-    // height: 160px;
     display: flex;
     align-self: center;
-    width: 350px; /* overflow: hidden; */
+    width: 350px;
   }
 }
 
@@ -78,31 +70,16 @@ img {
   justify-content: center;
   align-items: center;
   width: 77%;
-  /*! flex-wrap: wrap; */
   align-items: flex-start;
 }
 
 // ----------------Section----------------
 section {
-  /*! display: flex; */
-  /*! flex-direction: row; */
-  /*! padding-left: 112px; */
-  /*! padding-right: 112px; */
-
   div {
-    /*! display: flex; */
-    /*! width: 67vw; */
     flex-wrap: wrap;
   }
   .meal-list {
-    /*! display: flex; */
-    /*! flex-direction: column; */
-    /*! justify-content: flex-start; */
     .meals {
-      /*! display: flex; */
-      /*! flex-direction: column; */
-      /*! margin-bottom: 50px; */
-
       h3 {
         margin-top: 16px;
         margin-bottom: 16px;
@@ -112,13 +89,11 @@ section {
     .meal {
       display: flex;
       flex-direction: row;
-      // border: 1px solid violet;
       width: 838px;
 
       .meal-description {
         display: flex;
         background-color: white;
-        // border: 1px solid green;
         border-radius: 10px;
         margin-bottom: 20px;
         margin-right: 20px;
@@ -136,9 +111,7 @@ section {
           display: flex;
           font-size: 17px;
         }
-        // > div {
-        //   display: flex;
-        // }
+
         .meal-text {
           display: flex;
           flex-direction: column;
@@ -185,43 +158,68 @@ aside {
   display: flex;
   color: black;
   background-color: white;
-  min-width: 264px;
+  min-width: 350px;
   min-height: 145px;
   flex-direction: column;
+  padding: 16px;
   justify-content: center;
   margin-top: 55px;
   border-radius: 10px;
-  /*! padding: 14px; */
+  box-shadow: 0 0 10px rgb(235, 235, 235);
   position: sticky;
   top: 20px;
-  /*! left: 901px; */
   align-items: center;
-  .basket {
+
+  .cart {
     display: flex;
     flex-direction: column;
-  }
-
-  .btn-validate {
-    background-color: #00ccbc;
-    border: none;
-  }
-
-  .selected-meal {
-    display: flex;
-    button {
-      background-color: #00ccbc;
-    }
-    .meal-list {
+    .btn-validate {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #00ccbc;
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 5px;
+      height: 25px;
+      margin-bottom: 30px;
+    }
+
+    .selected-meal {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      width: 260px;
+      button {
+        color: #00ccbc;
+        border: 1px solid #00ccbc;
+        border-radius: 100%;
+        height: 15px;
+        width: 15px;
+        background-color: white;
+        margin: 0 4px 0 4px;
+      }
+      .number-name {
+        display: flex;
+        font-size: 16px;
+        width: 190px;
+
+        .cart-meal-names {
+          max-width: 160px;
+        }
+      }
+      .meal-list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+    .total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 19px;
+      font-weight: 00;
+      margin-top: 24px;
     }
   }
-
-  // .sousTotal {
-  // }
-
-  // .livraison {
-  // }
-
-  // .total {
-  // }
 }
