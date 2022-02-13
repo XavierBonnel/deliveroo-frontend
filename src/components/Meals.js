@@ -9,7 +9,6 @@ function Meals({
   setMealId,
   mealId,
   setMealName,
-  mealName,
   setMealPrice,
   mealPrice,
   cart,

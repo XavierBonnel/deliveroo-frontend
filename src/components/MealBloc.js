@@ -1,18 +1,6 @@
 import React from "react";
 
-function MealBloc({
-  meal,
-  index,
-  setSelectedRestaurant,
-  selectedRestaurant,
-  setMealId,
-  setMealName,
-  mealName,
-  setMealPrice,
-  mealPrice,
-  setCart,
-  cart,
-}) {
+function MealBloc({ meal, setCart, cart }) {
   return (
     <div
       key={meal.id}
@@ -34,12 +22,6 @@ function MealBloc({
           itemAlreadyOrdered.quantity++;
           setCart(newCart);
         }
-
-        // setSelectedRestaurant(true);
-        // setMealId(meal.id);
-        // setMealName(meal.title);
-        // setMealPrice(meal.price);
-        // console.log(meal);
       }}
     >
       <div className="meal-description">
