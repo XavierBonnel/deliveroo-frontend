@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Meals from "./components/Meals";
 import Logo from "./components/Logo";
 import Cart from "./components/Cart";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   const [data, setData] = useState({});
@@ -42,13 +43,13 @@ function App() {
       {/* ------------header------------ */}
       <Logo />
       <hr />
-      <div className="container">
-        {/* ----------hero>restaurant selected---------- */}
-        <div className="selected-restaurant">
-          <div>
-            {isLoading ? (
-              <p>data loading...</p>
-            ) : (
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="container">
+          {/* ----------hero>restaurant selected---------- */}
+          <div className="selected-restaurant">
+            <div>
               <div>
                 <div className="text-bloc-selected-restau">
                   <h1>{data.restaurant.name}</h1>
@@ -56,35 +57,35 @@ function App() {
                 </div>
                 <img src={data.restaurant.picture} alt="restaurant photo" />
               </div>
-            )}
+            </div>
+          </div>
+          {/* ------------section on left------------ */}
+          <div className="below-selected-restaurant">
+            <section>
+              {/* ----------section>articles for dishes---------- */}
+              {/* ----bloc of meals---- */}
+              <Meals
+                data={data}
+                isLoading={isLoading}
+                setSelectedRestaurant={setSelectedRestaurant}
+                selectedRestaurant={selectedRestaurant}
+                setMealId={setMealId}
+                mealId={mealId}
+                setMealName={setMealName}
+                mealName={mealName}
+                mealPrice={mealPrice}
+                setMealPrice={setMealPrice}
+                cart={cart}
+                setCart={setCart}
+              />
+            </section>
+            {/* ------------aside for basket on right------------ */}
+            <aside>
+              <Cart cart={cart} setCart={setCart} calculTotal={calculTotal} />
+            </aside>
           </div>
         </div>
-        {/* ------------section on left------------ */}
-        <div className="below-selected-restaurant">
-          <section>
-            {/* ----------section>articles for dishes---------- */}
-            {/* ----bloc of meals---- */}
-            <Meals
-              data={data}
-              isLoading={isLoading}
-              setSelectedRestaurant={setSelectedRestaurant}
-              selectedRestaurant={selectedRestaurant}
-              setMealId={setMealId}
-              mealId={mealId}
-              setMealName={setMealName}
-              mealName={mealName}
-              mealPrice={mealPrice}
-              setMealPrice={setMealPrice}
-              cart={cart}
-              setCart={setCart}
-            />
-          </section>
-          {/* ------------aside for basket on right------------ */}
-          <aside>
-            <Cart cart={cart} setCart={setCart} calculTotal={calculTotal} />
-          </aside>
-        </div>
-      </div>
+      )}
       );
     </div>
   );

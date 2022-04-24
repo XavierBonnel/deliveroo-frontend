@@ -1,4 +1,5 @@
 import React from "react";
+import { BsFillStarFill } from "react-icons/bs";
 
 function MealBloc({ meal, setCart, cart }) {
   return (
@@ -24,13 +25,18 @@ function MealBloc({ meal, setCart, cart }) {
         }
       }}
     >
-      <div className="meal-description">
+      <div className="meal-description" style={{ cursor: "pointer" }}>
         <div className="meal-text">
           <h4>{meal.title}</h4>
           <p>{meal.description}</p>
           <div className="price-pop">
             <span className="price">{meal.price}€</span>
-            {meal.popular && <span className="popular">Populaire</span>}
+            {meal.popular && (
+              <div>
+                <BsFillStarFill style={{ color: "#ffb62d" }} />
+                <span className="popular">Populaire</span>
+              </div>
+            )}
           </div>
         </div>
         <div className="meal-image">

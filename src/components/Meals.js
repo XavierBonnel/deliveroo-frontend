@@ -16,19 +16,17 @@ function Meals({
 }) {
   return (
     <div className="under-section">
-      {isLoading ? (
-        <p>Loading in progress...</p>
-      ) : (
-        <div className="meal-list">
-          {data["categories"].map((mealType, index) => {
-            return (
-              <div className="meals" key={index}>
-                {mealType.meals.length !== 0 && (
-                  <div>
-                    <h3>{mealType.name}</h3>
-                    <div className="meal">
-                      {mealType.meals.map((meal, index) => {
-                        return (
+      <div className="meal-list">
+        {data["categories"].map((mealType, index) => {
+          return (
+            <div className="meals" key={index}>
+              {mealType.meals.length !== 0 && (
+                <div>
+                  <h3>{mealType.name}</h3>
+                  <div className="meal">
+                    {mealType.meals.map((meal, index) => {
+                      return (
+                        <div key={index}>
                           <MealBloc
                             data={data}
                             meal={meal}
@@ -44,16 +42,16 @@ function Meals({
                             cart={cart}
                             setCart={setCart}
                           />
-                        );
-                      })}
-                    </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
