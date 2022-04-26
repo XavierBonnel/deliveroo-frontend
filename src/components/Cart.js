@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion"
+
 
 function Cart({ cart, setCart, calculTotal }) {
   return (
@@ -7,7 +9,8 @@ function Cart({ cart, setCart, calculTotal }) {
       {cart.length === 0 ? (
         <p>mon panier est vide</p>
       ) : (
-        <button className="btn-validate">Valider mon panier</button>
+        <motion.button style={{ cursor: "pointer" }} whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }} className="btn-validate">Valider mon panier</motion.button>
       )}
 
       {cart.map((item) => {
@@ -15,6 +18,7 @@ function Cart({ cart, setCart, calculTotal }) {
           <div className="selected-meal">
             <span className="number-name">
               <button
+className="buttonCart"
                 onClick={() => {
                   if (item.quantity === 1) {
                     const newCart = [...cart];
@@ -35,6 +39,8 @@ function Cart({ cart, setCart, calculTotal }) {
               </button>
               {item.quantity}
               <button
+className="buttonCart"
+
                 onClick={() => {
                   const newCart = [...cart];
                   item.quantity++;

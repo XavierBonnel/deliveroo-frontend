@@ -1,9 +1,13 @@
 import React from "react";
 import { BsFillStarFill } from "react-icons/bs";
+import { motion } from "framer-motion"
+
 
 function MealBloc({ meal, setCart, cart }) {
   return (
-    <div
+    <motion.div
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
       key={meal.id}
       onClick={() => {
         const itemAlreadyOrdered = cart.find((item) => item.id === meal.id);
@@ -43,7 +47,7 @@ function MealBloc({ meal, setCart, cart }) {
           {meal.picture && <img src={meal.picture} alt="meal picturee" />}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
