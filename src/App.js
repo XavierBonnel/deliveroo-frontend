@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://my-deliveroo--backend.herokuapp.com/"
+        "https://deliveroo-backend.onrender.com/"
       );
       setData(response.data);
       setIsLoading(false);
